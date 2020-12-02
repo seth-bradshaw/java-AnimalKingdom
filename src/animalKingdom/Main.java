@@ -75,16 +75,22 @@ public class Main
         filteredList.forEach((v) -> System.out.println(v));
 
         System.out.println("\n*** List only those animals that breath with lungs and were named in 1758 ***");
-        List<AbstractAnimalClass> newFilteredList = filterAnimals(filteredList, (v) -> v.getYearDiscovered() == 1758);
+        List<AbstractAnimalClass> newFilteredList = filterAnimals(animalList, (v) -> v.getYearDiscovered() == 1758 && v.breath() == "lungs");
         newFilteredList.forEach((v) -> System.out.println(v));
 
         System.out.println("\n*** List only those animals that lay eggs and breath with lungs ***");
-        List<AbstractAnimalClass> brandNewFilteredList = filterAnimals(filteredList, (v) -> v.reproduce() == "eggs");
+        List<AbstractAnimalClass> brandNewFilteredList = filterAnimals(animalList, (v) -> v.reproduce() == "eggs" && v.breath() == "lungs");
         brandNewFilteredList.forEach((v) -> System.out.println(v));
 
         System.out.println("\n*** List alphabetically only those animals that were named in 1758 ***");
         List<AbstractAnimalClass> brandSpankingNewFilteredList = filterAnimals(animalList, (v) -> v.getYearDiscovered() == 1758);
         brandSpankingNewFilteredList.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
         brandSpankingNewFilteredList.forEach((v) -> System.out.println(v));
+
+        System.out.println("\n*** STRETCH GOALS ***");
+        List<AbstractAnimalClass> stretchgoal = filterAnimals(animalList, (v) -> v instanceof Mammals);
+        stretchgoal.sort((v1, v2) -> v1.getName().compareToIgnoreCase(v2.getName()));
+        stretchgoal.forEach((v) -> System.out.println(v));
+
     }
 }
